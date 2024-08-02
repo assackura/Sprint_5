@@ -11,7 +11,7 @@ from locators import BurgersLocators
 
 class TestStellarBurgerRegisterPage:
 
-    @pytest.mark.parametrize('name,email,password', [['Woody', Help.generate_email(), '123456'], ['Scooby', Help.generate_email(), 'dfkjhdfkg'], ['Chilly', Help.generate_email(), 'Dhh123$##DSAY@~%f2']])
+    @pytest.mark.parametrize('name,email,password', [['Woody', Help.generate_email(), Help.generate_password()], ['Scooby', Help.generate_email(), Help.generate_password()], ['Chilly', Help.generate_email(), Help.generate_password()]])
     def test_register_page_correct_login_password(self, register_page_driver, name, email, password):
         register_page_driver.find_element(*BurgersLocators.INPUT_PASSWORD_REGISTER).send_keys(password)
         register_page_driver.find_element(*BurgersLocators.INPUT_EMAIL_REGISTER).send_keys(email)
