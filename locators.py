@@ -23,3 +23,6 @@ class BurgersLocators:
     BUNS_LINK = (By.XPATH, ".//span[text()='Булки']/parent::div") #Раздел "Булки" в конструкторе
     SAUCES_LINK = (By.XPATH, ".//span[text()='Соусы']/parent::div") #Раздел "Соусы" в конструкторе
     FILLINGS_LINK = (By.XPATH, ".//span[text()='Начинки']/parent::div") #Раздел "Начинки" в конструкторе
+    BUTTON_RESTORE = (By.XPATH, ".//form[contains(@class, 'Auth_form')]//button[text()='Восстановить']")  # Кнопка "Восстановить"
+    ING_MAIN_PAGE_MEAT = (By.XPATH, ".//p[contains(@class, 'BurgerIngredient_ingredient') and text()='Мясо бессмертных моллюсков Protostomia']") #Ингридиент в конструкторе
+    ING_MAIN_PAGE_BUNS = (By.XPATH, ".//p[contains(@class, 'BurgerIngredient_ingredient') and text()='Флюоресцентная булка R2-D3']") #Ингридиент в конструкторе

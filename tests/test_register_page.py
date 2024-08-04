@@ -6,6 +6,7 @@ from selenium.webdriver.support import expected_conditions
 from data import DataBurgers
 from helpers import Help
 from locators import BurgersLocators
+from links import LinksBurgers
 
 class TestStellarBurgerRegisterPage:
 
@@ -15,9 +16,9 @@ class TestStellarBurgerRegisterPage:
         register_page_driver.find_element(*BurgersLocators.INPUT_EMAIL_REGISTER).send_keys(email)
         register_page_driver.find_element(*BurgersLocators.INPUT_NAME_REGISTER).send_keys(name)
         register_page_driver.find_element(*BurgersLocators.BUTTON_REGISTER).click()
-        WebDriverWait(register_page_driver, DataBurgers.TIME_WAIT).until(expected_conditions.url_contains("login"))
-
-        assert register_page_driver.current_url == 'https://stellarburgers.nomoreparties.site/login'
+        WebDriverWait(register_page_driver, DataBurgers.TIME_WAIT).until(expected_conditions.element_to_be_clickable(
+            (BurgersLocators.BUTTON_SIGNIN_ON_PAGE_LOGIN)))
+        assert register_page_driver.current_url == LinksBurgers.LOGIN_URL
 
     def test_show_error_for_not_correct_password(self, register_page_driver):
         register_page_driver.find_element(*BurgersLocators.INPUT_PASSWORD_REGISTER).send_keys("1")

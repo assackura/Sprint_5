@@ -15,20 +15,19 @@ class TestMainPage:
     def test_link_personal_area(self, signin_main_driver):
         signin_main_driver.find_element(*BurgersLocators.PERSONAL_AREA_LINK).click()
         WebDriverWait(signin_main_driver, DataBurgers.TIME_WAIT).until(expected_conditions.element_to_be_clickable(
-            (By.XPATH, ".//li[contains(@class, 'Account_listItem')]/a[contains(@class, 'Account_link')]")))
+            (BurgersLocators.SAVE_BTN_IN_PERSONAL_AREA)))
         save_btn = signin_main_driver.find_element(*BurgersLocators.SAVE_BTN_IN_PERSONAL_AREA)
         assert save_btn.is_displayed()
 
     def test_buns_on_main_page(self, driver_chrome):
         driver_chrome.find_element(*BurgersLocators.FILLINGS_LINK).click()
         WebDriverWait(driver_chrome, DataBurgers.TIME_WAIT).until(expected_conditions.visibility_of_element_located((
-            By.XPATH, ".//p[contains(@class, 'BurgerIngredient_ingredient') and text()='Мясо бессмертных моллюсков Protostomia']"
+            BurgersLocators.ING_MAIN_PAGE_MEAT
         )))
         div_buns_class = driver_chrome.find_element(*BurgersLocators.BUNS_LINK)
         div_buns_class.click()
         WebDriverWait(driver_chrome, DataBurgers.TIME_WAIT).until(expected_conditions.visibility_of_element_located((
-            By.XPATH,
-            ".//p[contains(@class, 'BurgerIngredient_ingredient') and text()='Флюоресцентная булка R2-D3']"
+            BurgersLocators.ING_MAIN_PAGE_BUNS
         )))
         assert "current" in div_buns_class.get_attribute("class")
 
